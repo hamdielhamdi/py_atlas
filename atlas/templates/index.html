@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+home
+{% endblock %}
+<head>
+    {% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('.static', filename='costume.css')}}">
+    {% endblock %}
+</head>
+
+
+{% block content %}
+
+<body class="container" id="general" style="margin-top:50px;">
+<div class="fixed">
+    {% include 'nav.html' %}
+</div>
+<div class="row" >
+    <div class="col-md-5" style="margin-top:10%;" >
+            <h2>
+                {% if name is defined %}
+                Hello {{ name.username }}, Welcome to Atlas project.
+                {% else %}
+                Welcome to Atlas project.
+                {% endif %}
+            </h2>
+            <p>What is project Atlas?</p>
+            <p>
+                Atlas project aim to answer any question from any one, about any subject.
+                whether the answer is classified as public or private.
+                it give people access to higher level of information that can't be obvious by simple research on the
+                network
+                by a usual browser.
+            </p>
+            <p>How it work?</p>
+            <p>
+                Ask atlas any things, be creative, atlas will impress you.
+            </p>
+
+    </div>
+</div>
+</div>
+</body>
+
+{% endblock %}
+

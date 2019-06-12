@@ -1,0 +1,39 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Login
+{% endblock %}
+
+<head>
+    {% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('.static', filename='costume.css')}}">
+    {% endblock %}
+</head>
+
+
+{% block content %}
+<body class="container" id="general" style="margin-top:50px;">
+<div class="fixed">
+    {% include 'nav.html' %}
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <form class="form-signin" method="POST" action="/login" style="margin-top: 10%;">
+            {% if error is not none %}
+            <h4 style="color:red">{{ error }}</h4>
+            {% endif %}
+            <h2 class="form-signin-heading">Sign In</h2>
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            {{ wtf.form_field(form.remember) }}
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+
+    </div>
+</div>
+</body>
+{% endblock %}
